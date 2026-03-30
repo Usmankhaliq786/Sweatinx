@@ -30,6 +30,37 @@ body{background:var(--black);color:var(--white);font-family:'Rajdhani',sans-seri
 /* NOISE */
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:0.3;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");}
 
+/* ANNOUNCEMENT BAR */
+.announce-bar{position:fixed;top:0;left:0;right:0;z-index:300;background:linear-gradient(90deg,var(--blue),var(--glow),var(--blue));background-size:200% 100%;animation:announceSweep 4s linear infinite;padding:9px 20px;text-align:center;font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;color:#000;display:flex;align-items:center;justify-content:center;gap:12px;white-space:nowrap;overflow:hidden;}
+@keyframes announceSweep{0%{background-position:0% 0%;}100%{background-position:200% 0%;}}
+.announce-bar .truck{font-size:15px;animation:truckRide 3s ease-in-out infinite;}
+@keyframes truckRide{0%,100%{transform:translateX(0);}50%{transform:translateX(6px);}}
+.announce-bar .sep{opacity:0.5;margin:0 6px;}
+
+/* VIDEO HERO */
+.video-hero{position:relative;width:100%;height:100vh;min-height:500px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.video-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.video-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,8,16,0.45) 0%,rgba(5,8,16,0.2) 40%,rgba(5,8,16,0.75) 85%,rgba(5,8,16,1) 100%);}
+.video-overlay-grid{position:absolute;inset:0;z-index:2;background-image:linear-gradient(rgba(13,74,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(13,74,255,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.video-content{position:relative;z-index:3;text-align:center;padding:0 24px;animation:fadeSlideUp 1.2s ease both;}
+.video-brand-tag{font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:6px;color:var(--glow);margin-bottom:22px;display:flex;align-items:center;justify-content:center;gap:14px;}
+.video-brand-tag::before,.video-brand-tag::after{content:'';display:block;width:40px;height:1px;background:var(--glow);}
+.video-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(70px,13vw,160px);line-height:0.88;letter-spacing:4px;margin-bottom:10px;}
+.video-title .vt-main{display:block;color:var(--white);text-shadow:0 0 60px rgba(0,198,255,0.2);}
+.video-title .vt-glow{display:block;background:linear-gradient(135deg,var(--glow) 0%,#fff 50%,var(--blue) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 40px rgba(0,198,255,0.6));animation:titleShimmer 3s ease-in-out infinite;}
+@keyframes titleShimmer{0%,100%{filter:drop-shadow(0 0 30px rgba(0,198,255,0.5));}50%{filter:drop-shadow(0 0 60px rgba(0,198,255,0.9));}}
+.video-subtitle{font-size:clamp(14px,2.5vw,20px);font-weight:300;color:rgba(232,244,255,0.75);letter-spacing:2px;margin-bottom:36px;font-family:'Rajdhani',sans-serif;}
+.video-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(0,198,255,0.1);border:1px solid rgba(0,198,255,0.3);padding:8px 22px;margin-bottom:36px;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:3px;color:var(--glow);}
+.video-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.scroll-indicator{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;animation:scrollBounce 2s ease-in-out infinite;}
+.scroll-indicator span{font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:3px;color:var(--muted);}
+.scroll-arrow{width:20px;height:20px;border-right:2px solid var(--glow);border-bottom:2px solid var(--glow);transform:rotate(45deg);}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+
+/* FREE DELIVERY BADGE in price row */
+.delivery-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(37,211,102,0.12),rgba(37,211,102,0.06));border:1px solid rgba(37,211,102,0.35);padding:6px 16px;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:2px;color:#25D366;margin-bottom:28px;}
+.delivery-badge svg{width:15px;height:15px;fill:#25D366;flex-shrink:0;}
+
 /* WHATSAPP FLOAT */
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:500;width:58px;height:58px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,0.5);animation:waPulse 2.5s ease-in-out infinite;transition:transform 0.3s;}
 .wa-float:hover{transform:scale(1.12);}
@@ -37,7 +68,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;
 @keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,0.5);}50%{box-shadow:0 4px 40px rgba(37,211,102,0.9),0 0 0 10px rgba(37,211,102,0.1);}}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,8,16,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(13,74,255,0.15);transition:all 0.4s;}
+nav{position:fixed;top:38px;left:0;right:0;z-index:200;padding:16px 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,8,16,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(13,74,255,0.15);transition:all 0.4s;}
 .nav-logo{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;letter-spacing:4px;background:linear-gradient(135deg,#fff 30%,var(--glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
 .nav-logo span{-webkit-text-fill-color:var(--glow);}
 .nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
@@ -62,7 +93,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 60px;display:fl
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 50%,rgba(13,74,255,0.14) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(0,198,255,0.07) 0%,transparent 60%),linear-gradient(180deg,#050810 0%,#080e1a 100%);}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(13,74,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(13,74,255,0.05) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);}
-.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.hero-particles,.video-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2;}
 .particle{position:absolute;width:2px;height:2px;background:var(--glow);border-radius:50%;animation:particleDrift linear infinite;}
 @keyframes particleDrift{0%{transform:translateY(100vh) translateX(0);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-20px) translateX(var(--drift));opacity:0;}}
 .hero-content{position:relative;z-index:2;padding:120px 60px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1400px;margin:0 auto;width:100%;}
@@ -244,6 +275,8 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
 
 /* ===== TABLET ≤1024px ===== */
 @media(max-width:1024px){
+  .announce-bar{font-size:9px;letter-spacing:2px;padding:7px 14px;}
+  nav{top:34px;}
   nav{padding:16px 28px;}
   .nav-links{gap:18px;}
   .hero-content{padding:110px 28px 60px;gap:36px;}
@@ -263,6 +296,18 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
 
 /* ===== MOBILE ≤768px ===== */
 @media(max-width:768px){
+  .announce-bar{font-size:8px;letter-spacing:1px;padding:7px 10px;gap:6px;}
+  .announce-bar .sep{display:none;}
+  nav{top:32px;padding:14px 18px;}
+  nav.scrolled{top:0;}
+
+  .video-hero{height:100svh;}
+  .video-title{font-size:clamp(58px,17vw,100px);}
+  .video-subtitle{font-size:13px;letter-spacing:1.5px;}
+  .video-brand-tag{font-size:9px;letter-spacing:3px;}
+  .video-badge{font-size:9px;letter-spacing:2px;padding:7px 14px;}
+  .video-btns{flex-direction:column;align-items:center;gap:12px;}
+  .video-btns .btn-primary,.video-btns .btn-outline{width:100%;max-width:280px;text-align:center;}
   nav{padding:14px 18px;}
   .nav-links{display:none;}
   .nav-toggle{display:flex;}
@@ -377,6 +422,19 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce-bar">
+  <span class="truck">🚚</span>
+  FREE DELIVERY ALL OVER PAKISTAN
+  <span class="sep">|</span>
+  ORDER NOW &amp; GET IT AT YOUR DOORSTEP
+  <span class="sep">|</span>
+  <span class="truck">🚚</span>
+  FREE DELIVERY ALL OVER PAKISTAN
+  <span class="sep">|</span>
+  CASH ON DELIVERY AVAILABLE
+</div>
+
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#product" onclick="closeMenu()">Product</a>
@@ -403,29 +461,38 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
   </button>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-particles" id="particles"></div>
-  <div class="hero-content">
-    <div class="hero-text">
-      <div class="hero-tag">ADVANCED SWEAT DEFENSE</div>
-      <h1>STAY<br><span class="line-blue">COOL.</span>STAY<br>FRESH.</h1>
-      <p class="hero-desc">SWEATINX Advanced Defense Technology keeps you cool, dry, and confident for up to 24 hours. No alcohol. Gentle formula. Built for everyone.</p>
-      <div class="hero-btns">
-        <a href="#buy" class="btn-primary">SHOP NOW</a>
-        <a href="#features" class="btn-outline">DISCOVER MORE</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="glow-orb"></div>
-      <div class="glow-ring-1"></div>
-      <div class="glow-ring-2"></div>
-      <img src="images/sweatinx-3.jpeg" alt="Sweatinx Product" class="hero-product-img">
+<!-- VIDEO HERO -->
+<section class="video-hero" id="home">
+  <video autoplay muted loop playsinline preload="auto" poster="/mnt/user-data/uploads/Sweatinx.jpeg">
+    <source src="images/sweatinx-video.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+  <div class="video-overlay-grid"></div>
+  <div class="video-particles" id="particles"></div>
+  <div class="video-content">
+    <div class="video-brand-tag">ADVANCED SWEAT DEFENSE · PAKISTAN</div>
+    <h1 class="video-title">
+      <span class="vt-main">STAY COOL.</span>
+      <span class="vt-glow">SWEATINX</span>
+    </h1>
+    <p class="video-subtitle">24H COOLING · ZERO ALCOHOL · FOR MEN &amp; WOMEN</p>
+    <!-- <div class="video-badge">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 14H5V8l7 5 7-5v10zm-7-7L5 6h14l-7 5z"/></svg>
+      🚚 FREE DELIVERY ALL OVER PAKISTAN
+    </div> -->
+    <div class="video-btns">
+      <a href="https://wa.me/923164654305?text=I%20want%20to%20order%20Sweatinx!" target="_blank" class="btn-primary">ORDER NOW — Rs. 1,999</a>
+      <a href="#product" class="btn-outline">EXPLORE PRODUCT</a>
     </div>
   </div>
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
 </section>
+
+<!-- OLD HERO REMOVED — scroll to product section below -->
+
 
 <!-- STATS BAR -->
 <div class="stats-bar">
@@ -466,8 +533,8 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
       <!-- Set 1 -->
       <div class="gallery-item"><img src="images/sweatinx-3.jpeg" alt="Sweatinx smoke shot" loading="lazy"></div>
       <div class="gallery-item"><img src="images/sweatinx-4.jpeg" alt="Sweatinx water splash" loading="lazy"></div>
-      <div class="gallery-item"><img src="images/sweatinx-5.jpeg" alt="Sweatinx ice cave" loading="lazy"></div>
-      <div class="gallery-item"><img src="images/sweatinx-6.jpeg" alt="Sweatinx nature" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/sweatinx-6.jpeg" alt="Sweatinx ice cave" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/sweatinx-5.jpeg" alt="Sweatinx nature" loading="lazy"></div>
       <div class="gallery-item"><img src="images/Sweatinx.jpeg" alt="Sweatinx hero" loading="lazy"></div>
       <!-- Set 2 (clone for seamless loop) -->
       <div class="gallery-item"><img src="images/sweatinx-3.jpeg" alt="Sweatinx smoke shot" loading="lazy"></div>
@@ -484,11 +551,11 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
   <div class="product-inner">
     <div class="product-img-wrap reveal-left">
       <div class="product-img-bg"></div>
-      <img src="images/sweatinx-5.jpeg" alt="Sweatinx Advanced Defense" class="product-img">
+      <img src="images/sweatinx-4.jpeg" alt="Sweatinx Advanced Defense" class="product-img">
     </div>
     <div class="product-info reveal-right">
       <span class="section-tag">FLAGSHIP PRODUCT</span>
-      <h2>SWEATINX <span>ADVANCED</span></h2>
+      <h2>PRODUCT <span>X</span></h2>
       <p>The ultimate body defense spray engineered for peak performance. Combining cutting-edge antiperspirant science with a refreshing cooling sensation — your daily armor against sweat and odor.</p>
       <div class="product-specs">
         <div class="spec-item"><div class="spec-dot"></div>24 Hour Cooling Protection</div>
@@ -498,9 +565,13 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
         <div class="spec-item"><div class="spec-dot"></div>200 ML Premium Volume</div>
         <div class="spec-item"><div class="spec-dot"></div>For Men &amp; Women</div>
       </div>
+      <div class="delivery-badge">
+        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+        FREE DELIVERY ALL OVER PAKISTAN
+      </div>
       <div class="price-row">
-        <span class="price">PKR 1,499</span>
-        <div><div class="price-sub">FREE DELIVERY</div><div class="price-sub">NATIONWIDE</div></div>
+        <span class="price">Rs. 1,999</span>
+        <div><div class="price-sub">CASH ON DELIVERY</div><div class="price-sub">AVAILABLE</div></div>
       </div>
       <div class="hero-btns">
         <a href="https://wa.me/923164654305?text=I%20want%20to%20order%20Sweatinx!" target="_blank" class="btn-primary">ORDER ON WHATSAPP</a>
@@ -556,7 +627,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
   <div class="insta-inner">
     <div class="insta-qr-wrap reveal-left">
       <div class="qr-card">
-        <img src="images/sweatinx-5.jpeg" alt="Sweatinx Instagram QR Code">
+        <img src="images/sweatinx-3.jpeg" alt="Sweatinx Instagram QR Code">
         <p>@SWEATINX.PK</p>
       </div>
     </div>
@@ -587,9 +658,9 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
   <div class="cta-inner reveal">
     <span class="section-tag">LIMITED STOCK AVAILABLE</span>
     <h2 class="cta-title">READY TO<br><span>STAY COOL?</span></h2>
-    <p class="cta-desc">Join thousands of satisfied customers who trust SWEATINX for all-day freshness. Order now and experience the advanced sweat defense difference.</p>
+    <p class="cta-desc">Join thousands of satisfied customers who trust SWEATINX for all-day freshness. <strong style="color:var(--glow);">Free delivery all over Pakistan.</strong> Cash on delivery available. Order now!</p>
     <div class="cta-btns">
-      <a href="https://wa.me/923164654305?text=I%20want%20to%20order%20Sweatinx!" target="_blank" class="btn-primary">ORDER ON WHATSAPP</a>
+      <a href="https://wa.me/923164654305?text=I%20want%20to%20order%20Sweatinx!" target="_blank" class="btn-primary">ORDER NOW — Rs. 1,999</a>
       <a href="#social" class="btn-outline">FOLLOW US</a>
     </div>
   </div>
@@ -674,6 +745,7 @@ document.querySelectorAll('a,button').forEach(el=>{
 // ── PARTICLES ────────────────────────────────────────────
 (function spawnParticles(){
   const container=document.getElementById('particles');
+  if(!container) return;
   for(let i=0;i<28;i++){
     const p=document.createElement('div');
     p.className='particle';
@@ -726,8 +798,14 @@ document.querySelectorAll('.count-num').forEach(el=>counterObs.observe(el));
 
 // ── NAV SCROLL ───────────────────────────────────────────
 window.addEventListener('scroll',()=>{
-  document.getElementById('navbar').style.background=
-    window.scrollY>50?'rgba(5,8,16,0.98)':'rgba(5,8,16,0.92)';
+  const nb=document.getElementById('navbar');
+  if(window.scrollY>50){
+    nb.style.background='rgba(5,8,16,0.98)';
+    nb.style.top='0';
+  } else {
+    nb.style.background='rgba(5,8,16,0.92)';
+    nb.style.top='';
+  }
 });
 
 // ── GALLERY PAUSE ON HOVER (mobile touch) ───────────────
