@@ -409,6 +409,91 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
   .social-btn{font-size:10px;padding:11px 18px;}
   .mobile-menu a{font-size:18px;}
 }
+/* ══════════════════════════════════════
+   COD ORDER MODAL
+══════════════════════════════════════ */
+.modal-backdrop{position:fixed;inset:0;z-index:1000;background:rgba(5,8,16,0.92);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
+.modal-backdrop.open{opacity:1;pointer-events:all;}
+.modal-box{background:var(--deep);border:1px solid rgba(13,74,255,0.3);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;position:relative;animation:modalPop 0.4s cubic-bezier(0.23,1,0.32,1) both;padding:48px 44px 40px;}
+@keyframes modalPop{from{transform:scale(0.9) translateY(30px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+.modal-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--glow),var(--blue));}
+.modal-close{position:absolute;top:18px;right:20px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;transition:color 0.2s;font-family:monospace;}
+.modal-close:hover{color:var(--white);}
+.modal-head{margin-bottom:28px;}
+.modal-tag{font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:4px;color:var(--glow);display:block;margin-bottom:10px;}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:2px;line-height:1;color:var(--white);}
+.modal-title span{background:linear-gradient(135deg,var(--glow),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.modal-product-row{display:flex;align-items:center;gap:16px;background:rgba(13,74,255,0.06);border:1px solid rgba(13,74,255,0.15);padding:16px;margin-bottom:28px;}
+.modal-product-row img{width:60px;height:60px;object-fit:cover;flex-shrink:0;}
+.mprod-info{flex:1;}
+.mprod-name{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:var(--white);letter-spacing:1px;}
+.mprod-price{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;color:var(--glow);margin-top:2px;}
+.mprod-badge{font-size:11px;color:#25D366;letter-spacing:1px;margin-top:2px;}
+.form-group{margin-bottom:18px;}
+.form-group label{display:block;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:3px;color:var(--muted);margin-bottom:8px;}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(13,74,255,0.25);color:var(--white);font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:500;padding:13px 16px;outline:none;transition:border-color 0.3s,box-shadow 0.3s;-webkit-appearance:none;border-radius:0;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--glow);box-shadow:0 0 0 3px rgba(0,198,255,0.08);}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(107,140,174,0.5);}
+.form-group textarea{resize:vertical;min-height:80px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.qty-row{display:flex;align-items:center;gap:12px;}
+.qty-btn{width:36px;height:36px;background:rgba(13,74,255,0.1);border:1px solid rgba(13,74,255,0.3);color:var(--white);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;}
+.qty-btn:hover{background:rgba(0,198,255,0.15);border-color:var(--glow);}
+.qty-display{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;color:var(--glow);min-width:32px;text-align:center;}
+.total-row{display:flex;align-items:center;justify-content:space-between;background:rgba(0,198,255,0.05);border:1px solid rgba(0,198,255,0.15);padding:14px 18px;margin:20px 0;}
+.total-label{font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:3px;color:var(--muted);}
+.total-amount{font-family:'Orbitron',sans-serif;font-size:24px;font-weight:900;color:var(--glow);}
+.modal-submit{width:100%;font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;padding:18px;background:linear-gradient(135deg,var(--blue),var(--glow));color:var(--black);border:none;cursor:pointer;transition:all 0.3s;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);position:relative;overflow:hidden;}
+.modal-submit::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.25),transparent);transform:translateX(-100%);transition:transform 0.4s;}
+.modal-submit:hover::after{transform:translateX(100%);}
+.modal-submit:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,198,255,0.4);}
+.modal-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+
+/* SUCCESS STATE */
+.order-success{text-align:center;padding:20px 0;}
+.success-icon{font-size:64px;margin-bottom:20px;animation:successPop 0.5s cubic-bezier(0.23,1,0.32,1) both;}
+@keyframes successPop{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+.order-success h3{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:2px;color:var(--glow);margin-bottom:12px;}
+.order-success p{font-size:16px;color:var(--muted);line-height:1.7;}
+.order-num{font-family:'Orbitron',sans-serif;font-size:13px;color:var(--white);margin-top:14px;background:rgba(0,198,255,0.08);border:1px solid rgba(0,198,255,0.2);padding:10px 20px;display:inline-block;letter-spacing:2px;}
+
+/* ══════════════════════════════════════
+   ADMIN PANEL (separate page style)
+══════════════════════════════════════ */
+.admin-backdrop{position:fixed;inset:0;z-index:2000;background:var(--black);display:none;flex-direction:column;overflow:hidden;}
+.admin-backdrop.open{display:flex;}
+.admin-header{background:var(--deep);border-bottom:1px solid rgba(13,74,255,0.2);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.admin-logo{font-family:'Orbitron',sans-serif;font-size:16px;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#fff,var(--glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.admin-logo span{-webkit-text-fill-color:var(--glow);}
+.admin-actions{display:flex;gap:10px;align-items:center;}
+.admin-btn{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;padding:10px 20px;cursor:pointer;transition:all 0.3s;border:none;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);}
+.admin-btn-primary{background:linear-gradient(135deg,var(--blue),var(--glow));color:var(--black);}
+.admin-btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.2);color:var(--white);}
+.admin-btn-danger{background:rgba(255,60,60,0.15);border:1px solid rgba(255,60,60,0.3);color:#ff6b6b;}
+.admin-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.3);}
+.admin-body{flex:1;overflow-y:auto;padding:28px;}
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;}
+.admin-stat{background:var(--deep);border:1px solid rgba(13,74,255,0.15);padding:20px;text-align:center;}
+.admin-stat-num{font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;color:var(--glow);display:block;}
+.admin-stat-label{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+.admin-table-wrap{background:var(--deep);border:1px solid rgba(13,74,255,0.15);overflow-x:auto;}
+.admin-table{width:100%;border-collapse:collapse;min-width:700px;}
+.admin-table th{font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:2px;color:var(--glow);padding:14px 16px;border-bottom:1px solid rgba(13,74,255,0.2);text-align:left;background:rgba(13,74,255,0.06);white-space:nowrap;}
+.admin-table td{font-size:14px;color:var(--white);padding:14px 16px;border-bottom:1px solid rgba(13,74,255,0.08);vertical-align:top;}
+.admin-table tr:last-child td{border-bottom:none;}
+.admin-table tr:hover td{background:rgba(13,74,255,0.04);}
+.order-badge{display:inline-block;padding:3px 10px;font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:1px;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);color:#25D366;}
+.admin-empty{text-align:center;padding:60px 20px;color:var(--muted);}
+.admin-empty-icon{font-size:48px;margin-bottom:16px;display:block;opacity:0.4;}
+.admin-empty p{font-family:'Orbitron',sans-serif;font-size:13px;letter-spacing:2px;}
+.admin-close-btn{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:4px;transition:color 0.2s;}
+.admin-close-btn:hover{color:var(--white);}
+@media(max-width:600px){
+  .modal-box{padding:32px 20px 28px;}
+  .form-row{grid-template-columns:1fr;}
+  .modal-title{font-size:30px;}
+  .admin-stats{grid-template-columns:1fr 1fr;}
+}
 </style>
 </head>
 <body>
@@ -463,7 +548,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
 
 <!-- VIDEO HERO -->
 <section class="video-hero" id="home">
-  <video autoplay muted loop playsinline preload="auto" poster="/mnt/user-data/uploads/Sweatinx.jpeg">
+  <video autoplay muted loop playsinline preload="auto" poster="images/sweatinx-video.mp4">
     <source src="images/sweatinx-video.mp4" type="video/mp4">
   </video>
   <div class="video-overlay"></div>
@@ -476,12 +561,12 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
       <span class="vt-glow">SWEATINX</span>
     </h1>
     <p class="video-subtitle">24H COOLING · ZERO ALCOHOL · FOR MEN &amp; WOMEN</p>
-    <!-- <div class="video-badge">
+    <div class="video-badge">
       <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 14H5V8l7 5 7-5v10zm-7-7L5 6h14l-7 5z"/></svg>
       🚚 FREE DELIVERY ALL OVER PAKISTAN
-    </div> -->
+    </div>
     <div class="video-btns">
-      <a href="https://wa.me/923164654305?text=I%20want%20to%20order%20Sweatinx!" target="_blank" class="btn-primary">ORDER NOW — Rs. 1,999</a>
+      <a href="#" data-order="true" class="btn-primary">ORDER NOW — Rs. 1,999</a>
       <a href="#product" class="btn-outline">EXPLORE PRODUCT</a>
     </div>
   </div>
@@ -533,15 +618,15 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
       <!-- Set 1 -->
       <div class="gallery-item"><img src="images/sweatinx-3.jpeg" alt="Sweatinx smoke shot" loading="lazy"></div>
       <div class="gallery-item"><img src="images/sweatinx-4.jpeg" alt="Sweatinx water splash" loading="lazy"></div>
-      <div class="gallery-item"><img src="images/sweatinx-6.jpeg" alt="Sweatinx ice cave" loading="lazy"></div>
-      <div class="gallery-item"><img src="images/sweatinx-5.jpeg" alt="Sweatinx nature" loading="lazy"></div>
-      <div class="gallery-item"><img src="images/Sweatinx.jpeg" alt="Sweatinx hero" loading="lazy"></div>
-      <!-- Set 2 (clone for seamless loop) -->
-      <div class="gallery-item"><img src="images/sweatinx-3.jpeg" alt="Sweatinx smoke shot" loading="lazy"></div>
-      <div class="gallery-item"><img src="images/sweatinx-4.jpeg" alt="Sweatinx water splash" loading="lazy"></div>
       <div class="gallery-item"><img src="images/sweatinx-5.jpeg" alt="Sweatinx ice cave" loading="lazy"></div>
       <div class="gallery-item"><img src="images/sweatinx-6.jpeg" alt="Sweatinx nature" loading="lazy"></div>
       <div class="gallery-item"><img src="images/Sweatinx.jpeg" alt="Sweatinx hero" loading="lazy"></div>
+      <!-- Set 2 (clone for seamless loop) -->
+      <div class="gallery-item"><img src="images/sweatinx-3.jpeg" alt="Sweatinx smoke shot" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/Sweatinx.jpeg" alt="Sweatinx water splash" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/sweatinx-4.jpeg" alt="Sweatinx ice cave" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/sweatinx-5.jpeg" alt="Sweatinx nature" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/sweatinx-6.jpeg" alt="Sweatinx hero" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -574,7 +659,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
         <div><div class="price-sub">CASH ON DELIVERY</div><div class="price-sub">AVAILABLE</div></div>
       </div>
       <div class="hero-btns">
-        <a href="https://wa.me/923164654305?text=I%20want%20to%20order%20Sweatinx!" target="_blank" class="btn-primary">ORDER ON WHATSAPP</a>
+        <a href="#" data-order="true" class="btn-primary">ORDER NOW — Rs. 1,999</a>
         <a href="#howitworks" class="btn-outline">LEARN MORE</a>
       </div>
     </div>
@@ -660,7 +745,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
     <h2 class="cta-title">READY TO<br><span>STAY COOL?</span></h2>
     <p class="cta-desc">Join thousands of satisfied customers who trust SWEATINX for all-day freshness. <strong style="color:var(--glow);">Free delivery all over Pakistan.</strong> Cash on delivery available. Order now!</p>
     <div class="cta-btns">
-      <a href="https://wa.me/923164654305?text=I%20want%20to%20order%20Sweatinx!" target="_blank" class="btn-primary">ORDER NOW — Rs. 1,999</a>
+      <a href="#" data-order="true" class="btn-primary">ORDER NOW — Rs. 1,999</a>
       <a href="#social" class="btn-outline">FOLLOW US</a>
     </div>
   </div>
@@ -724,6 +809,142 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
     <span>Privacy · Terms</span>
   </div>
 </footer>
+
+<!-- ══════════════════════════════════════
+     COD ORDER MODAL
+══════════════════════════════════════ -->
+<div class="modal-backdrop" id="orderModal">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+
+    <!-- FORM VIEW -->
+    <div id="modalFormView">
+      <div class="modal-head">
+        <span class="modal-tag">CASH ON DELIVERY</span>
+        <h2 class="modal-title" id="modalTitle">PLACE YOUR <span>ORDER</span></h2>
+      </div>
+
+      <div class="modal-product-row">
+        <img src="images/sweatinx-4.jpeg" alt="Sweatinx">
+        <div class="mprod-info">
+          <div class="mprod-name">SWEATINX ADVANCED</div>
+          <div class="mprod-price" id="modalPrice">Rs. 1,999</div>
+          <div class="mprod-badge">🚚 Free Delivery All Over Pakistan</div>
+        </div>
+      </div>
+
+      <!-- QTY -->
+      <div class="form-group">
+        <label>QUANTITY</label>
+        <div class="qty-row">
+          <button class="qty-btn" id="qtyMinus" type="button">−</button>
+          <span class="qty-display" id="qtyDisplay">1</span>
+          <button class="qty-btn" id="qtyPlus" type="button">+</button>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>FULL NAME *</label>
+          <input type="text" id="oName" placeholder="e.g. Ahmed Khan" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label>PHONE NUMBER *</label>
+          <input type="tel" id="oPhone" placeholder="03XX XXXXXXX" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>EMAIL ADDRESS</label>
+        <input type="email" id="oEmail" placeholder="your@email.com" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label>DELIVERY ADDRESS *</label>
+        <textarea id="oAddress" placeholder="House/Flat No, Street, Area, City, Province"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>CITY *</label>
+        <input type="text" id="oCity" placeholder="e.g. Lahore">
+      </div>
+
+      <div class="form-group">
+        <label>SPECIAL NOTES (Optional)</label>
+        <input type="text" id="oNotes" placeholder="Any special instructions...">
+      </div>
+
+      <div class="total-row">
+        <span class="total-label">TOTAL AMOUNT</span>
+        <span class="total-amount" id="totalAmount">Rs. 1,999</span>
+      </div>
+
+      <p id="formError" style="color:#ff6b6b;font-size:13px;margin-bottom:14px;display:none;font-family:'Orbitron',sans-serif;letter-spacing:1px;"></p>
+
+      <button class="modal-submit" id="submitOrder" type="button">
+        ✓ &nbsp; CONFIRM COD ORDER
+      </button>
+    </div>
+
+    <!-- SUCCESS VIEW -->
+    <div id="modalSuccessView" style="display:none;">
+      <div class="order-success">
+        <div class="success-icon">✅</div>
+        <h3>ORDER PLACED!</h3>
+        <p>Your Cash on Delivery order has been received.<br>Our team will contact you within 24 hours.</p>
+        <div class="order-num" id="orderNumDisplay"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ADMIN PANEL
+══════════════════════════════════════ -->
+<div class="admin-backdrop" id="adminPanel">
+  <div class="admin-header">
+    <div class="admin-logo">SWEATIN<span>X</span> &nbsp;·&nbsp; ORDERS</div>
+    <div class="admin-actions">
+      <button class="admin-btn admin-btn-primary" id="downloadPDF">⬇ DOWNLOAD PDF</button>
+      <button class="admin-btn admin-btn-danger" id="clearOrders">🗑 CLEAR ALL</button>
+      <button class="admin-close-btn" id="adminClose">✕</button>
+    </div>
+  </div>
+  <div class="admin-body">
+    <div class="admin-stats" id="adminStats">
+      <div class="admin-stat"><span class="admin-stat-num" id="statTotal">0</span><div class="admin-stat-label">Total Orders</div></div>
+      <div class="admin-stat"><span class="admin-stat-num" id="statRevenue">0</span><div class="admin-stat-label">Total Revenue (Rs.)</div></div>
+      <div class="admin-stat"><span class="admin-stat-num" id="statToday">0</span><div class="admin-stat-label">Today's Orders</div></div>
+      <div class="admin-stat"><span class="admin-stat-num" id="statQty">0</span><div class="admin-stat-label">Total Units</div></div>
+    </div>
+    <div class="admin-table-wrap">
+      <table class="admin-table" id="ordersTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ORDER ID</th>
+            <th>DATE & TIME</th>
+            <th>NAME</th>
+            <th>PHONE</th>
+            <th>EMAIL</th>
+            <th>CITY</th>
+            <th>ADDRESS</th>
+            <th>QTY</th>
+            <th>TOTAL</th>
+            <th>NOTES</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody">
+        </tbody>
+      </table>
+      <div class="admin-empty" id="adminEmpty" style="display:none;">
+        <span class="admin-empty-icon">📦</span>
+        <p>NO ORDERS YET</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 // ── CURSOR ──────────────────────────────────────────────
@@ -812,6 +1033,259 @@ window.addEventListener('scroll',()=>{
 const track=document.getElementById('galleryTrack');
 track.addEventListener('touchstart',()=>track.style.animationPlayState='paused',{passive:true});
 track.addEventListener('touchend',()=>track.style.animationPlayState='running',{passive:true});
+
+// ══════════════════════════════════════════════════════════
+//  COD ORDER SYSTEM
+// ══════════════════════════════════════════════════════════
+const PRICE_PER_UNIT = 1999;
+const STORAGE_KEY    = 'sweatinx_orders';
+
+// ── ORDER STORAGE (localStorage with JSON) ──────────────
+function loadOrders(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]'); }
+  catch(e){ return []; }
+}
+function saveOrders(orders){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
+}
+
+// ── QTY LOGIC ───────────────────────────────────────────
+let qty = 1;
+function updateQtyUI(){
+  document.getElementById('qtyDisplay').textContent = qty;
+  document.getElementById('totalAmount').textContent = 'Rs. ' + (PRICE_PER_UNIT * qty).toLocaleString();
+}
+document.getElementById('qtyPlus').addEventListener('click',()=>{ if(qty<10){qty++; updateQtyUI();} });
+document.getElementById('qtyMinus').addEventListener('click',()=>{ if(qty>1){qty--; updateQtyUI();} });
+
+// ── OPEN / CLOSE MODAL ───────────────────────────────────
+function openOrderModal(){
+  qty = 1;
+  updateQtyUI();
+  document.getElementById('modalFormView').style.display='block';
+  document.getElementById('modalSuccessView').style.display='none';
+  document.getElementById('formError').style.display='none';
+  // Clear fields
+  ['oName','oPhone','oEmail','oAddress','oCity','oNotes'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value='';
+  });
+  document.getElementById('orderModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeOrderModal(){
+  document.getElementById('orderModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('modalClose').addEventListener('click', closeOrderModal);
+document.getElementById('orderModal').addEventListener('click', e=>{
+  if(e.target===document.getElementById('orderModal')) closeOrderModal();
+});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeOrderModal(); });
+
+// Hook all order/buy buttons
+document.querySelectorAll('[data-order]').forEach(btn=>{
+  btn.addEventListener('click', e=>{e.preventDefault(); openOrderModal();});
+});
+
+// ── SUBMIT ORDER ─────────────────────────────────────────
+document.getElementById('submitOrder').addEventListener('click', ()=>{
+  const name    = document.getElementById('oName').value.trim();
+  const phone   = document.getElementById('oPhone').value.trim();
+  const email   = document.getElementById('oEmail').value.trim();
+  const address = document.getElementById('oAddress').value.trim();
+  const city    = document.getElementById('oCity').value.trim();
+  const notes   = document.getElementById('oNotes').value.trim();
+  const errEl   = document.getElementById('formError');
+
+  // Validate
+  if(!name){ showErr('Please enter your full name.'); return; }
+  if(!phone || !/^[0-9+\-\s]{10,15}$/.test(phone)){ showErr('Please enter a valid phone number.'); return; }
+  if(!address){ showErr('Please enter your delivery address.'); return; }
+  if(!city){ showErr('Please enter your city.'); return; }
+
+  function showErr(msg){ errEl.textContent=msg; errEl.style.display='block'; }
+  errEl.style.display='none';
+
+  // Build order
+  const orderId  = 'SWX-' + Date.now().toString(36).toUpperCase();
+  const now      = new Date();
+  const order    = {
+    id:      orderId,
+    date:    now.toLocaleDateString('en-PK',{day:'2-digit',month:'short',year:'numeric'}),
+    time:    now.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'}),
+    dateRaw: now.toISOString(),
+    name, phone, email, address, city, notes,
+    qty,
+    unitPrice: PRICE_PER_UNIT,
+    total:    PRICE_PER_UNIT * qty,
+    status:   'Pending'
+  };
+
+  // Save
+  const btn = document.getElementById('submitOrder');
+  btn.disabled = true;
+  btn.textContent = 'SAVING...';
+  try {
+    const orders = loadOrders();
+    orders.unshift(order);
+    saveOrders(orders);
+    // Show success
+    document.getElementById('modalFormView').style.display='none';
+    document.getElementById('modalSuccessView').style.display='block';
+    document.getElementById('orderNumDisplay').textContent = 'Order ID: ' + orderId;
+  } catch(err){
+    showErr('Could not save order. Please try again.');
+  } finally {
+    btn.disabled=false;
+    btn.textContent='✓  CONFIRM COD ORDER';
+  }
+});
+
+// ══════════════════════════════════════════════════════════
+//  ADMIN PANEL
+// ══════════════════════════════════════════════════════════
+function openAdmin(){
+  renderAdminTable();
+  document.getElementById('adminPanel').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeAdmin(){
+  document.getElementById('adminPanel').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('adminClose').addEventListener('click', closeAdmin);
+
+function renderAdminTable(){
+  const orders = loadOrders();
+  const tbody  = document.getElementById('ordersBody');
+  const empty  = document.getElementById('adminEmpty');
+  tbody.innerHTML='';
+
+  if(!orders.length){
+    document.getElementById('ordersTable').style.display='none';
+    empty.style.display='block';
+    updateAdminStats([]);
+    return;
+  }
+  document.getElementById('ordersTable').style.display='table';
+  empty.style.display='none';
+
+  orders.forEach((o,i)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td style="color:var(--muted);font-size:12px;">${i+1}</td>
+      <td><span style="font-family:'Orbitron',sans-serif;font-size:11px;color:var(--glow);">${o.id}</span></td>
+      <td style="white-space:nowrap;font-size:12px;color:var(--muted);">${o.date}<br>${o.time}</td>
+      <td><strong>${o.name}</strong></td>
+      <td style="white-space:nowrap;">${o.phone}</td>
+      <td style="font-size:13px;color:var(--muted);">${o.email||'—'}</td>
+      <td>${o.city}</td>
+      <td style="font-size:13px;max-width:180px;">${o.address}</td>
+      <td style="text-align:center;font-family:'Orbitron',sans-serif;color:var(--glow);">${o.qty}</td>
+      <td style="font-family:'Orbitron',sans-serif;font-size:14px;color:var(--glow);white-space:nowrap;">Rs. ${o.total.toLocaleString()}</td>
+      <td style="font-size:12px;color:var(--muted);max-width:140px;">${o.notes||'—'}</td>
+      <td><span class="order-badge">${o.status}</span></td>
+    `;
+    tbody.appendChild(tr);
+  });
+  updateAdminStats(orders);
+}
+
+function updateAdminStats(orders){
+  const today = new Date().toDateString();
+  document.getElementById('statTotal').textContent   = orders.length;
+  document.getElementById('statRevenue').textContent = orders.reduce((s,o)=>s+o.total,0).toLocaleString();
+  document.getElementById('statToday').textContent   = orders.filter(o=>new Date(o.dateRaw).toDateString()===today).length;
+  document.getElementById('statQty').textContent     = orders.reduce((s,o)=>s+o.qty,0);
+}
+
+// ── CLEAR ORDERS ─────────────────────────────────────────
+document.getElementById('clearOrders').addEventListener('click',()=>{
+  if(confirm('Delete ALL orders? This cannot be undone.')){
+    localStorage.removeItem(STORAGE_KEY);
+    renderAdminTable();
+  }
+});
+
+// ── DOWNLOAD PDF ─────────────────────────────────────────
+document.getElementById('downloadPDF').addEventListener('click',()=>{
+  const orders = loadOrders();
+  if(!orders.length){ alert('No orders to download.'); return; }
+
+  // Build PDF-ready HTML and print
+  const rows = orders.map((o,i)=>`
+    <tr>
+      <td>${i+1}</td>
+      <td>${o.id}</td>
+      <td>${o.date} ${o.time}</td>
+      <td>${o.name}</td>
+      <td>${o.phone}</td>
+      <td>${o.email||'—'}</td>
+      <td>${o.city}</td>
+      <td>${o.address}</td>
+      <td>${o.qty}</td>
+      <td>Rs. ${o.total.toLocaleString()}</td>
+      <td>${o.notes||'—'}</td>
+      <td>${o.status}</td>
+    </tr>`).join('');
+
+  const totalRevenue = orders.reduce((s,o)=>s+o.total,0);
+  const totalUnits   = orders.reduce((s,o)=>s+o.qty,0);
+  const html=`<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<title>SWEATINX Orders — ${new Date().toLocaleDateString()}</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Arial,sans-serif;font-size:12px;color:#111;background:#fff;padding:24px;}
+  h1{font-size:22px;font-weight:900;letter-spacing:2px;margin-bottom:4px;}
+  .sub{color:#666;font-size:12px;margin-bottom:20px;}
+  .summary{display:flex;gap:24px;margin-bottom:20px;flex-wrap:wrap;}
+  .s-box{border:1px solid #e0e0e0;padding:12px 20px;min-width:140px;}
+  .s-num{font-size:22px;font-weight:900;color:#0d4aff;}
+  .s-lbl{font-size:10px;letter-spacing:2px;color:#999;text-transform:uppercase;margin-top:2px;}
+  table{width:100%;border-collapse:collapse;margin-top:8px;}
+  th{background:#050810;color:#00c6ff;font-size:10px;letter-spacing:1px;padding:10px 8px;text-align:left;white-space:nowrap;}
+  td{padding:9px 8px;border-bottom:1px solid #f0f0f0;vertical-align:top;font-size:11px;}
+  tr:nth-child(even) td{background:#f9f9f9;}
+  .oid{color:#0d4aff;font-weight:700;}
+  .price{font-weight:700;color:#0d4aff;}
+  footer{margin-top:24px;text-align:center;color:#aaa;font-size:11px;}
+  @media print{body{padding:12px;}}
+</style></head><body>
+<h1>SWEATINX — ORDER REPORT</h1>
+<div class="sub">Generated: ${new Date().toLocaleString('en-PK')} &nbsp;|&nbsp; Total Orders: ${orders.length}</div>
+<div class="summary">
+  <div class="s-box"><div class="s-num">${orders.length}</div><div class="s-lbl">Total Orders</div></div>
+  <div class="s-box"><div class="s-num">Rs. ${totalRevenue.toLocaleString()}</div><div class="s-lbl">Total Revenue</div></div>
+  <div class="s-box"><div class="s-num">${totalUnits}</div><div class="s-lbl">Units Sold</div></div>
+</div>
+<table>
+  <thead><tr>
+    <th>#</th><th>Order ID</th><th>Date & Time</th><th>Name</th>
+    <th>Phone</th><th>Email</th><th>City</th><th>Address</th>
+    <th>Qty</th><th>Total</th><th>Notes</th><th>Status</th>
+  </tr></thead>
+  <tbody>${rows}</tbody>
+</table>
+<footer>SWEATINX Advanced Sweat Defense · @sweatinx.pk · +92 316 4654305</footer>
+</body></html>`;
+
+  const win=window.open('','_blank','width=1100,height=700');
+  win.document.write(html);
+  win.document.close();
+  win.focus();
+  setTimeout(()=>win.print(),600);
+});
+
+// ── SECRET ADMIN ACCESS (triple-click on footer logo) ───
+let clickCount=0, clickTimer=null;
+document.querySelector('.footer-logo').addEventListener('click',()=>{
+  clickCount++;
+  clearTimeout(clickTimer);
+  if(clickCount>=3){ clickCount=0; openAdmin(); return; }
+  clickTimer=setTimeout(()=>clickCount=0,600);
+});
 </script>
 </body>
 </html>
