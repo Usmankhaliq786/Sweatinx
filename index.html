@@ -5,8 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SWEATINX — Advanced Sweat Defense</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-<!-- EmailJS SDK — sends order emails directly to your inbox, no server needed -->
+<!-- EmailJS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  // ══════════════════════════════════════════════════════
+  //  EMAILJS CONFIG — hardcoded & ready
+  // ══════════════════════════════════════════════════════
+  (function(){
+    emailjs.init("fbx-BYGNJ82HS59e5");
+  })();
+  var EJS_SERVICE_ID  = "service_ip6h3jh";
+  var EJS_TEMPLATE_ID = "template_3jom2ln";
+</script>
 <style>
 :root{
   --black:#050810;--deep:#080e1a;--blue:#0d4aff;--glow:#00c6ff;
@@ -25,9 +35,7 @@ body{background:var(--black);color:var(--white);font-family:'Rajdhani',sans-seri
 /* NOISE */
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:0.3;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");}
 
-/* ═══════════════════════════════════════
-   MOVING ANNOUNCEMENT BAR
-═══════════════════════════════════════ */
+/* ANNOUNCEMENT BAR */
 .announce-bar{
   position:fixed;top:0;left:0;right:0;z-index:300;
   background:linear-gradient(90deg,var(--blue),var(--glow),var(--blue));
@@ -37,21 +45,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;
   display:flex;align-items:center;
 }
 @keyframes announceBg{0%{background-position:0% 0%;}100%{background-position:200% 0%;}}
-
-/* The scrolling track */
-.announce-track{
-  display:flex;align-items:center;gap:0;
-  white-space:nowrap;
-  animation:announceScroll 18s linear infinite;
-  width:max-content;
-}
+.announce-track{display:flex;align-items:center;gap:0;white-space:nowrap;animation:announceScroll 18s linear infinite;width:max-content;}
 @keyframes announceScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-.announce-item{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;
-  letter-spacing:3px;color:#000;
-  padding:0 32px;
-}
+.announce-item{display:inline-flex;align-items:center;gap:10px;font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:#000;padding:0 32px;}
 .announce-item .ic{font-size:14px;}
 .announce-sep{color:rgba(0,0,0,0.3);font-size:16px;padding:0 6px;}
 
@@ -91,7 +87,7 @@ nav{position:fixed;top:36px;left:0;right:0;z-index:200;padding:16px 60px;display
 .hero-particles,.video-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2;}
 .particle{position:absolute;width:2px;height:2px;background:var(--glow);border-radius:50%;animation:particleDrift linear infinite;}
 @keyframes particleDrift{0%{transform:translateY(100vh) translateX(0);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-20px) translateX(var(--drift));opacity:0;}}
-.video-content{position:relative;z-index:3;text-align:center;padding:0 24px;animation:fadeSlideUp 1.2s ease both;margin-top: 290px;}
+.video-content{position:relative;z-index:3;text-align:center;padding:0 24px;animation:fadeSlideUp 1.2s ease both;margin-top:290px;}
 .video-brand-tag{font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:6px;color:var(--glow);margin-bottom:22px;display:flex;align-items:center;justify-content:center;gap:14px;}
 .video-brand-tag::before,.video-brand-tag::after{content:'';display:block;width:40px;height:1px;background:var(--glow);}
 .video-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(70px,13vw,160px);line-height:0.88;letter-spacing:4px;margin-bottom:10px;}
@@ -298,7 +294,6 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
 .modal-submit{width:100%;font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;padding:18px;background:linear-gradient(135deg,var(--blue),var(--glow));color:var(--black);border:none;cursor:pointer;transition:all 0.3s;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);position:relative;overflow:hidden;}
 .modal-submit:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,198,255,0.4);}
 .modal-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
-/* sending state */
 .modal-submit.sending{background:linear-gradient(135deg,#1a3a80,#0099cc);}
 
 /* SUCCESS */
@@ -311,10 +306,6 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
 .receipt-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;width:100%;font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;padding:16px 24px;background:transparent;color:var(--glow);border:1px solid var(--glow);cursor:pointer;transition:all 0.3s;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);}
 .receipt-btn:hover{background:rgba(0,198,255,0.1);transform:translateY(-2px);}
 .receipt-btn svg{width:17px;height:17px;fill:currentColor;flex-shrink:0;}
-
-/* EMAIL SETUP NOTICE */
-.email-notice{background:rgba(255,200,50,0.08);border:1px solid rgba(255,200,50,0.3);padding:12px 16px;margin-bottom:20px;font-size:13px;color:#ffd700;letter-spacing:0.5px;line-height:1.5;display:none;}
-.email-notice strong{font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:2px;}
 
 /* ═══════════════════════════════════════
    ADMIN PANEL
@@ -347,18 +338,11 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
 .admin-close-btn{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:4px;transition:color 0.2s;}
 .admin-close-btn:hover{color:var(--white);}
 
-/* EMAIL SETUP IN ADMIN */
-.email-setup-box{background:rgba(13,74,255,0.05);border:1px solid rgba(13,74,255,0.2);padding:20px 24px;margin-bottom:24px;}
-.email-setup-box h3{font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:3px;color:var(--glow);margin-bottom:12px;}
-.email-setup-box p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px;}
-.email-setup-row{display:flex;gap:10px;flex-wrap:wrap;}
-.email-setup-input{flex:1;min-width:200px;background:rgba(255,255,255,0.03);border:1px solid rgba(13,74,255,0.25);color:var(--white);font-family:'Rajdhani',sans-serif;font-size:14px;padding:10px 14px;outline:none;border-radius:0;}
-.email-setup-input:focus{border-color:var(--glow);}
-.email-setup-input::placeholder{color:rgba(107,140,174,0.4);}
-.email-save-btn{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;padding:10px 20px;background:linear-gradient(135deg,var(--blue),var(--glow));color:var(--black);border:none;cursor:pointer;white-space:nowrap;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);}
-.setup-status{font-size:12px;margin-top:8px;letter-spacing:1px;}
-.setup-status.ok{color:#25D366;}
-.setup-status.warn{color:#ffd700;}
+/* EMAIL STATUS IN ADMIN */
+.email-status-box{background:rgba(0,198,255,0.05);border:1px solid rgba(0,198,255,0.2);padding:14px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.email-status-box .es-icon{font-size:22px;}
+.email-status-box .es-text{font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:2px;color:var(--glow);}
+.email-status-box .es-sub{font-size:12px;color:var(--muted);margin-top:2px;letter-spacing:1px;}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
@@ -440,22 +424,11 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- ═══════════════════════════════════════
-     MOVING ANNOUNCEMENT BAR
-═══════════════════════════════════════ -->
+<!-- ANNOUNCEMENT BAR -->
 <div class="announce-bar" aria-hidden="true">
   <div class="announce-track" id="announceTrack">
-    
-    <!-- Set 1 -->
-    <div class="announce-item">
-      Pakistan’s First-Ever Advanced Sweat Defense Technology Has Arrived.
-    </div>
-
-    <!-- Set 2 (repeat for smooth loop) -->
-    <div class="announce-item">
-      Pakistan’s First-Ever Advanced Sweat Defense Technology Has Arrived.
-    </div>
-
+    <div class="announce-item">Pakistan's First-Ever Advanced Sweat Defense Technology Has Arrived.</div>
+    <div class="announce-item">Pakistan's First-Ever Advanced Sweat Defense Technology Has Arrived.</div>
   </div>
 </div>
 
@@ -494,22 +467,15 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
   <div class="video-overlay-grid"></div>
   <div class="video-particles" id="particles"></div>
   <div class="video-content">
-    <!-- <div class="video-brand-tag">ADVANCED SWEAT DEFENSE · PAKISTAN</div> -->
     <h1 class="video-title">
       <span class="vt-main">STAY COOL.</span>
       <span class="vt-glow">SWEATINX</span>
     </h1>
-    <!-- <p class="video-subtitle">24H COOLING · ZERO ALCOHOL · FOR MEN &amp; WOMEN</p> -->
-    <!-- <div class="video-badge">🚚 FREE DELIVERY ALL OVER PAKISTAN</div> -->
     <div class="video-btns">
       <a href="#" data-order="true" class="btn-primary">ORDER NOW — Rs. 1,999</a>
       <a href="#product" class="btn-outline">EXPLORE PRODUCT</a>
     </div>
   </div>
-  <!-- <div class="scroll-indicator">
-    <span>SCROLL</span>
-    <div class="scroll-arrow"></div>
-  </div> -->
 </section>
 
 <!-- STATS BAR -->
@@ -690,7 +656,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
       <p>Advanced Sweat Defense Technology. Engineered for modern life. Stay cool, stay confident, stay fresh — 24 hours a day.</p>
       <div class="footer-socials">
         <a href="https://www.instagram.com/sweatinx.pk" target="_blank" class="f-social" title="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
         <a href="https://www.facebook.com/sweatinx" target="_blank" class="f-social" title="Facebook">
           <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -811,6 +777,28 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
     </div>
   </div>
 </div>
+<script>
+// 🔹 Get order_id from URL
+const params = new URLSearchParams(window.location.search);
+const orderIdFromURL = params.get("order_id");
+
+// 🔹 Load order from localStorage
+if(orderIdFromURL){
+  const orders = JSON.parse(localStorage.getItem(STORE)) || [];
+  const foundOrder = orders.find(o => o.id === orderIdFromURL);
+
+  if(foundOrder){
+    currentOrder = foundOrder;
+
+    // Show success view directly
+    document.getElementById('modalFormView').style.display = 'none';
+    document.getElementById('modalSuccessView').style.display = 'block';
+    document.getElementById('orderNumDisplay').textContent = 'Order ID: ' + foundOrder.id;
+  } else {
+    document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Order not found</h2>";
+  }
+}
+</script>
 
 <!-- ═══════════════════════════════════════
      ADMIN PANEL  (triple-click footer logo)
@@ -826,20 +814,13 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
   </div>
   <div class="admin-body">
 
-    <!-- EMAIL SETUP BOX -->
-    <div class="email-setup-box">
-      <h3>📧 EMAIL NOTIFICATION SETUP</h3>
-      <p>To receive order notifications by email, follow these <strong>3 free steps</strong>:<br>
-      1. Go to <strong>emailjs.com</strong> → Sign up free → Create a service (Gmail) → Create a template<br>
-      2. In the template use variables: <code>{{order_id}}</code>, <code>{{customer_name}}</code>, <code>{{customer_phone}}</code>, <code>{{customer_email}}</code>, <code>{{delivery_address}}</code>, <code>{{city}}</code>, <code>{{quantity}}</code>, <code>{{total_amount}}</code>, <code>{{order_date}}</code>, <code>{{notes}}</code><br>
-      3. Paste your Service ID, Template ID, and Public Key below and save:</p>
-      <div class="email-setup-row">
-        <input class="email-setup-input" id="ejsService"  placeholder="Service ID  (e.g. service_abc123)">
-        <input class="email-setup-input" id="ejsTemplate" placeholder="Template ID (e.g. template_xyz789)">
-        <input class="email-setup-input" id="ejsPublicKey" placeholder="Public Key   (e.g. abcDEF123...)">
-        <button class="email-save-btn" id="saveEmailConfig">SAVE &amp; ACTIVATE</button>
+    <!-- EMAIL STATUS BOX — shows config is active -->
+    <div class="email-status-box">
+      <span class="es-icon">✅</span>
+      <div>
+        <div class="es-text">EMAIL NOTIFICATIONS ACTIVE</div>
+        <div class="es-sub">Orders are automatically sent to sweatirinx@gmail.com via EmailJS · Service: service_3zcof0r</div>
       </div>
-      <div class="setup-status" id="setupStatus"></div>
     </div>
 
     <div class="admin-stats">
@@ -917,98 +898,109 @@ track.addEventListener('touchend',()=>track.style.animationPlayState='running',{
 // ══════════════════════════════════════════════════════
 //  ORDER SYSTEM
 // ══════════════════════════════════════════════════════
-const PRICE=1999, STORE='sweatinx_orders', EJS_STORE='sweatinx_ejs_config';
+const PRICE=1999, STORE='sweatinx_orders';
 let currentOrder=null, qty=1;
 
 function loadOrders(){try{return JSON.parse(localStorage.getItem(STORE)||'[]');}catch(e){return[];}}
 function saveOrders(o){localStorage.setItem(STORE,JSON.stringify(o));}
-function loadEJSConfig(){try{return JSON.parse(localStorage.getItem(EJS_STORE)||'{}');}catch(e){return{};}}
-function saveEJSConfig(c){localStorage.setItem(EJS_STORE,JSON.stringify(c));}
 
 // QTY
-function updateQtyUI(){document.getElementById('qtyDisplay').textContent=qty;document.getElementById('totalAmount').textContent='Rs. '+(PRICE*qty).toLocaleString();}
+function updateQtyUI(){
+  document.getElementById('qtyDisplay').textContent=qty;
+  document.getElementById('totalAmount').textContent='Rs. '+(PRICE*qty).toLocaleString();
+}
 document.getElementById('qtyPlus').addEventListener('click',()=>{if(qty<10){qty++;updateQtyUI();}});
 document.getElementById('qtyMinus').addEventListener('click',()=>{if(qty>1){qty--;updateQtyUI();}});
 
 // OPEN / CLOSE MODAL
-function openOrderModal(){qty=1;updateQtyUI();document.getElementById('modalFormView').style.display='block';document.getElementById('modalSuccessView').style.display='none';document.getElementById('formError').style.display='none';['oName','oPhone','oEmail','oAddress','oCity','oNotes'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});document.getElementById('orderModal').classList.add('open');document.body.style.overflow='hidden';}
+function openOrderModal(){
+  qty=1;updateQtyUI();
+  document.getElementById('modalFormView').style.display='block';
+  document.getElementById('modalSuccessView').style.display='none';
+  document.getElementById('formError').style.display='none';
+  ['oName','oPhone','oEmail','oAddress','oCity','oNotes'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('orderModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
 function closeOrderModal(){document.getElementById('orderModal').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('modalClose').addEventListener('click',closeOrderModal);
 document.getElementById('orderModal').addEventListener('click',e=>{if(e.target===document.getElementById('orderModal'))closeOrderModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOrderModal();});
 document.querySelectorAll('[data-order]').forEach(btn=>btn.addEventListener('click',e=>{e.preventDefault();openOrderModal();}));
 
-// SUBMIT ORDER
-document.getElementById('submitOrder').addEventListener('click',async ()=>{
-  const name=document.getElementById('oName').value.trim();
-  const phone=document.getElementById('oPhone').value.trim();
-  const email=document.getElementById('oEmail').value.trim();
-  const address=document.getElementById('oAddress').value.trim();
-  const city=document.getElementById('oCity').value.trim();
-  const notes=document.getElementById('oNotes').value.trim();
-  const errEl=document.getElementById('formError');
+// ══════════════════════════════════════════════════════
+//  SUBMIT ORDER — EmailJS hardcoded
+// ══════════════════════════════════════════════════════
+document.getElementById('submitOrder').addEventListener('click', async () => {
+  const name    = document.getElementById('oName').value.trim();
+  const phone   = document.getElementById('oPhone').value.trim();
+  const email   = document.getElementById('oEmail').value.trim();
+  const address = document.getElementById('oAddress').value.trim();
+  const city    = document.getElementById('oCity').value.trim();
+  const notes   = document.getElementById('oNotes').value.trim();
+  const errEl   = document.getElementById('formError');
+
   function showErr(msg){errEl.textContent=msg;errEl.style.display='block';}
   errEl.style.display='none';
-  if(!name){showErr('Please enter your full name.');return;}
+
+  if(!name)   {showErr('Please enter your full name.');return;}
   if(!phone||!/^[0-9+\-\s]{10,15}$/.test(phone)){showErr('Please enter a valid phone number.');return;}
   if(!address){showErr('Please enter your delivery address.');return;}
-  if(!city){showErr('Please enter your city.');return;}
+  if(!city)   {showErr('Please enter your city.');return;}
 
-  const orderId='SWX-'+Date.now().toString(36).toUpperCase();
-  const now=new Date();
-  const order={
-    id:orderId,
-    date:now.toLocaleDateString('en-PK',{day:'2-digit',month:'short',year:'numeric'}),
-    time:now.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'}),
-    dateRaw:now.toISOString(),
-    name,phone,email,address,city,notes,qty,
-    unitPrice:PRICE,total:PRICE*qty,status:'Pending'
+  const orderId = 'SWX-' + Date.now().toString(36).toUpperCase();
+  const now     = new Date();
+  const order   = {
+    id: orderId,
+    date: now.toLocaleDateString('en-PK',{day:'2-digit',month:'short',year:'numeric'}),
+    time: now.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'}),
+    dateRaw: now.toISOString(),
+    name, phone, email, address, city, notes, qty,
+    unitPrice: PRICE, total: PRICE * qty, status: 'Pending'
   };
 
-  const btn=document.getElementById('submitOrder');
-  btn.disabled=true;
-  btn.textContent='PLACING ORDER...';
+  const btn = document.getElementById('submitOrder');
+  btn.disabled = true;
+  btn.textContent = 'PLACING ORDER...';
   btn.classList.add('sending');
 
-  try{
+  try {
     // 1. Save to localStorage
-    const orders=loadOrders();
+    const orders = loadOrders();
     orders.unshift(order);
     saveOrders(orders);
-    currentOrder=order;
+    currentOrder = order;
 
-    // 2. Send email notification via EmailJS (if configured)
-    const ejsCfg=loadEJSConfig();
-    if(ejsCfg.serviceId && ejsCfg.templateId && ejsCfg.publicKey){
-      try{
-        emailjs.init(ejsCfg.publicKey);
-        await emailjs.send(ejsCfg.serviceId, ejsCfg.templateId, {
-          order_id:       order.id,
-          customer_name:  order.name,
-          customer_phone: order.phone,
-          customer_email: order.email || 'Not provided',
-          delivery_address: order.address,
-          city:           order.city,
-          quantity:       order.qty,
-          total_amount:   'Rs. ' + order.total.toLocaleString(),
-          order_date:     order.date + ' ' + order.time,
-          notes:          order.notes || 'None'
-        });
-      }catch(emailErr){
-        console.warn('Email notification failed (order still saved):', emailErr);
-      }
+    // 2. Send email via EmailJS (hardcoded credentials)
+    try {
+      await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
+  customer_name: order.name,
+  customer_phone: order.phone,
+  customer_email: order.email || 'Not provided',
+  delivery_address: order.address,
+  city: order.city,
+  quantity: order.qty,
+  total_amount: "Rs. " + order.total,
+  order_id: order.id,
+  order_date: order.date + " " + order.time,
+  notes: order.notes || 'None'
+});
+      console.log('✅ Email notification sent successfully');
+    } catch(emailErr) {
+      // Order is already saved — email failure is non-blocking
+      console.warn('⚠ Email notification failed (order still saved):', emailErr);
     }
 
-    // 3. Show success
-    document.getElementById('modalFormView').style.display='none';
-    document.getElementById('modalSuccessView').style.display='block';
-    document.getElementById('orderNumDisplay').textContent='Order ID: '+orderId;
+    // 3. Show success screen
+    document.getElementById('modalFormView').style.display  = 'none';
+    document.getElementById('modalSuccessView').style.display = 'block';
+    document.getElementById('orderNumDisplay').textContent  = 'Order ID: ' + orderId;
 
-  }catch(err){
+  } catch(err) {
     showErr('Could not save order. Please try again.');
-  }finally{
-    btn.disabled=false;
-    btn.textContent='✓  CONFIRM COD ORDER';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '✓  CONFIRM COD ORDER';
     btn.classList.remove('sending');
   }
 });
@@ -1147,46 +1139,9 @@ document.getElementById('downloadReceiptBtn').addEventListener('click',function(
 // ══════════════════════════════════════════════════════
 //  ADMIN PANEL
 // ══════════════════════════════════════════════════════
-function openAdmin(){
-  renderAdminTable();
-  loadEJSInputs();
-  document.getElementById('adminPanel').classList.add('open');
-  document.body.style.overflow='hidden';
-}
+function openAdmin(){renderAdminTable();document.getElementById('adminPanel').classList.add('open');document.body.style.overflow='hidden';}
 function closeAdmin(){document.getElementById('adminPanel').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('adminClose').addEventListener('click',closeAdmin);
-
-function loadEJSInputs(){
-  const cfg=loadEJSConfig();
-  if(cfg.serviceId)  document.getElementById('ejsService').value=cfg.serviceId;
-  if(cfg.templateId) document.getElementById('ejsTemplate').value=cfg.templateId;
-  if(cfg.publicKey)  document.getElementById('ejsPublicKey').value=cfg.publicKey;
-  const st=document.getElementById('setupStatus');
-  if(cfg.serviceId && cfg.templateId && cfg.publicKey){
-    st.textContent='✅ Email notifications are ACTIVE — orders will be sent to your configured email.';
-    st.className='setup-status ok';
-  } else {
-    st.textContent='⚠ Not configured — fill in all 3 fields above to enable email notifications.';
-    st.className='setup-status warn';
-  }
-}
-
-document.getElementById('saveEmailConfig').addEventListener('click',()=>{
-  const cfg={
-    serviceId:  document.getElementById('ejsService').value.trim(),
-    templateId: document.getElementById('ejsTemplate').value.trim(),
-    publicKey:  document.getElementById('ejsPublicKey').value.trim()
-  };
-  if(!cfg.serviceId||!cfg.templateId||!cfg.publicKey){
-    document.getElementById('setupStatus').textContent='⚠ Please fill in all 3 fields.';
-    document.getElementById('setupStatus').className='setup-status warn';
-    return;
-  }
-  saveEJSConfig(cfg);
-  emailjs.init(cfg.publicKey);
-  document.getElementById('setupStatus').textContent='✅ Saved! Email notifications are now ACTIVE.';
-  document.getElementById('setupStatus').className='setup-status ok';
-});
 
 function renderAdminTable(){
   const orders=loadOrders();
@@ -1225,7 +1180,7 @@ document.getElementById('downloadPDF').addEventListener('click',()=>{
   if(win){win.document.write(html);win.document.close();win.focus();}
 });
 
-// ── SECRET ADMIN: triple-click footer logo ──────────────
+// ── SECRET ADMIN: triple-click footer logo ──
 let clickCount=0,clickTimer=null;
 document.getElementById('footerLogo').addEventListener('click',()=>{
   clickCount++;clearTimeout(clickTimer);
