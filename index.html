@@ -460,7 +460,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
 
 <!-- VIDEO HERO -->
 <section class="video-hero" id="home">
-  <video autoplay muted loop playsinline preload="auto" poster="images/Sweatinx.jpeg">
+  <video autoplay muted loop playsinline preload="auto" poster="">
     <source src="images/sweatinx-video2.mp4" type="video/mp4">
   </video>
   <div class="video-overlay"></div>
@@ -472,7 +472,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
       <span class="vt-glow">SWEATINX</span>
     </h1>
     <div class="video-btns">
-      <a href="#" data-order="true" class="btn-primary">ORDER NOW — Rs. 1,999</a>
+      <a href="#" data-order="true" class="btn-primary">ORDER NOW — Rs. 2,999</a>
       <a href="#product" class="btn-outline">EXPLORE PRODUCT</a>
     </div>
   </div>
@@ -537,7 +537,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
     </div>
     <div class="product-info reveal-right">
       <span class="section-tag">FLAGSHIP PRODUCT</span>
-      <h2>SWEATINX <span>ADVANCED</span></h2>
+      <h2>PRODUCT <span>X</span></h2>
       <p>The ultimate body defense spray engineered for peak performance. Combining cutting-edge antiperspirant science with a refreshing cooling sensation — your daily armor against sweat and odor.</p>
       <div class="product-specs">
         <div class="spec-item"><div class="spec-dot"></div>24 Hour Cooling Protection</div>
@@ -552,11 +552,11 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
         FREE DELIVERY ALL OVER PAKISTAN
       </div>
       <div class="price-row">
-        <span class="price">Rs. 1,999</span>
+        <span class="price">Rs. 2,999</span>
         <div><div class="price-sub">CASH ON DELIVERY</div><div class="price-sub">AVAILABLE</div></div>
       </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="#" data-order="true" class="btn-primary">ORDER NOW — Rs. 1,999</a>
+        <a href="#" data-order="true" class="btn-primary">ORDER NOW — Rs. 2,999</a>
         <a href="#howitworks" class="btn-outline">LEARN MORE</a>
       </div>
     </div>
@@ -642,7 +642,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
     <h2 class="cta-title">READY TO<br><span>STAY COOL?</span></h2>
     <p class="cta-desc">Join thousands of satisfied customers who trust SWEATINX for all-day freshness. <strong style="color:var(--glow);">Free delivery all over Pakistan.</strong> Cash on delivery available.</p>
     <div class="cta-btns">
-      <a href="#" data-order="true" class="btn-primary">ORDER NOW — Rs. 1,999</a>
+      <a href="#" data-order="true" class="btn-primary">ORDER NOW — Rs. 2,999</a>
       <a href="#social" class="btn-outline">FOLLOW US</a>
     </div>
   </div>
@@ -717,7 +717,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
         <img src="images/Sweatinx.jpeg" alt="Sweatinx">
         <div class="mprod-info">
           <div class="mprod-name">SWEATINX ADVANCED</div>
-          <div class="mprod-price">Rs. 1,999</div>
+          <div class="mprod-price">Rs. 2,999</div>
           <div class="mprod-badge">🚚 Free Delivery All Over Pakistan</div>
         </div>
       </div>
@@ -757,7 +757,7 @@ footer{background:var(--deep);border-top:1px solid rgba(13,74,255,0.2);padding:6
       </div>
       <div class="total-row">
         <span class="total-label">TOTAL AMOUNT</span>
-        <span class="total-amount" id="totalAmount">Rs. 1,999</span>
+        <span class="total-amount" id="totalAmount">Rs. 2,999</span>
       </div>
       <p id="formError" style="color:#ff6b6b;font-size:13px;margin-bottom:14px;display:none;font-family:'Orbitron',sans-serif;letter-spacing:1px;"></p>
       <button class="modal-submit" id="submitOrder" type="button">✓ &nbsp; CONFIRM COD ORDER</button>
@@ -819,7 +819,7 @@ if(orderIdFromURL){
       <span class="es-icon">✅</span>
       <div>
         <div class="es-text">EMAIL NOTIFICATIONS ACTIVE</div>
-        <div class="es-sub">Orders are automatically sent to sweatirinx@gmail.com via EmailJS · Service: service_3zcof0r</div>
+        <div class="es-sub">Orders are automatically sent to sweatinx@gmail.com via EmailJS · Service: service_3zcof0r</div>
       </div>
     </div>
 
@@ -898,7 +898,7 @@ track.addEventListener('touchend',()=>track.style.animationPlayState='running',{
 // ══════════════════════════════════════════════════════
 //  ORDER SYSTEM
 // ══════════════════════════════════════════════════════
-const PRICE=1999, STORE='sweatinx_orders';
+const PRICE=2999, STORE='sweatinx_orders';
 let currentOrder=null, qty=1;
 
 function loadOrders(){try{return JSON.parse(localStorage.getItem(STORE)||'[]');}catch(e){return[];}}
